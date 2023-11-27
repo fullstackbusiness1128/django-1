@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Verification</title>
+</head>
+<body>
+
+<p>Hi,</p>
+
+<p>Please click on the below link to verify your email address</p>
+
+http://{{ domain }}{% url 'activate_account' uid=uid token=token %}
+
+<p>Thank You</p>
+
+</body>
+</html>

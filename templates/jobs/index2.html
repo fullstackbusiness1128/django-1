@@ -1,0 +1,43 @@
+{% extends "jobs/base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  <title>Leader Terminal - Home</title>
+{% endblock %}
+{% block content %}
+    <div class="main_section">
+        <div class="container">
+            <div class="row">
+                <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 offset-md-0 col-md-12 offset-sm-0 col-sm-12 offset-0 col-12">
+                    <div class="main_title">
+                        <h1 class="text-center">Directly connecting <span class="executive_txt">Executives</span> and <span>Companies</span></h1>
+                    </div>
+                    <div class="main_btns">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="button_item">
+                                    <a href="{% url 'job-list' %}">
+                                        <span>I am a Professional</span>
+                                        <p>Access thousands of confidential executive level Jobs</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="button_item">
+                                    <a href="{% url 'employer_signup' %}">
+                                        <span>I am an Employer</span>
+                                        <p>Interview top executives efficiently</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_img mt-4">
+                        <img src="{% static 'images/working.png' %}" alt="banner-image" class="img-fluid d-block mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

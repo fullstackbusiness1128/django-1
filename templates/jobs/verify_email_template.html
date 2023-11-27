@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <title>Leader Terminal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .email_template{
+            width: 425px;
+            margin: 0 auto;
+            font-family: sans-serif;
+        }
+        .logo img{
+            display: block;
+            margin: 20px auto 50px;
+        }
+    	.card_box{
+    		padding: 30px 50px 70px;
+		    box-shadow: 0px 0px 11px #efeeee;
+		    border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+    	}
+        .card_box h3{
+            line-height: 29px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+    	.card_box .btn__custom{
+    		border-radius: 50px;
+    		padding: 9px 40px;
+            background-color: #1c44ab;
+            outline: none;
+            border: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 14px;
+    	}
+        .template_footer{
+            text-align: center;
+        }
+    	.template_footer p{
+    		font-size: 14px;
+            line-height: 25px;
+    	}
+        .social_icons{
+            margin-bottom: 20px;
+        }
+        .actions{
+            color: #1c44ab;
+            margin-top: 25px;
+        }
+    	.actions a{
+    		color: #1c44ab;
+            text-transform: uppercase;
+            font-size: 14px;
+            text-decoration: none;
+    	}
+    </style>
+</head>
+
+<body>
+
+
+	<div class="email_template" style="width: 600px;max-width: 100%;margin: 0 auto;text-align: center">
+		<div class="logo">
+			<img src="{{ site }}{% static 'images/logo.png' %}" width="300" alt="logo">
+		</div>
+		<div class="card_box">
+			<h3>Please verify your email <br>by clicking on the button</h3>
+			<a href="http://{{ domain }}{% url 'activate_account' uid=uid token=token %}" class="btn__custom">Verify</a>
+		</div>
+		<div class="template_footer">
+			<div class="social_icons">
+                <a href="https://www.linkedin.com/company/leader-pact" target="_blank"><img src="{{ site }}{% static 'images/linkedin_email.png' %}" width="33px" alt="..."></a> &nbsp;
+{#                <a href="#"><img src="{{ site }}{% static 'images/twitter.png' %}" width="33px" alt="..."></a>#}
+            </div>
+            <div class="footer_info">
+                <p>This email was sent from Leader Terminal, Inc.
+{#                    <br>335 Madison Ave, 16th Floor <br> New York, NY 10017</p>#}
+{#                <p>Leader Terminal, Inc. TM 2017</p>#}
+{#                <div class="actions">#}
+{#                    <a href="#">Unsubscribe</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;#}
+{#                    <a href="#">VIew In Browser</a>#}
+{#                </div>#}
+            </div>
+		</div>
+	</div>
+
+</body>
+</html>

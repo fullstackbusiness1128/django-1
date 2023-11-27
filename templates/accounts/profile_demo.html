@@ -1,0 +1,65 @@
+{% extends "jobs/../jobs/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  <title>Leader Terminal - Profile</title>
+{% endblock %}
+
+{% block content %}
+  <a href="/jobs" class="btn btn-secondary">Jobs Demo</a>
+  <br/>
+  <div class="card mt-2 mb-2">
+    <div class="card-body">
+      <h5 class="card-title" align= "center">Demo User</h5>
+      <hr>
+      <p class="card-text"><b>Email</b><br>demo@leadertheory.com</p>
+      <p class="card-text"><b><a href="https://www.linkedin.com/company/leader-theory">LinkedIn</a></b><br></p>
+      <a href="/profile/edit" class="btn btn-light">Edit</a>
+    </div>
+  </div>
+
+  <div class="card mt-2 mb-2">
+    <div class="card-body">
+      <p class="card-text"><b>Simulation Session</b><br>1/5/2019</p>
+      <p class="card-text"><b>Analysis Session</b><br>2/3/2019</p>
+      <p class="card-text"><b>Psychologist notes</b><br></p>
+    </div>
+  </div>
+
+  <div class="card mt-2 mb-2">
+    <div class="card-body">
+      <p class="card-text"><b>Frontal awareness</b><br>Exceptional</p>
+      <p class="card-text"><b>Limbic awareness</b><br>Average</p>
+      <p class="card-text"><b>Communication</b><br>Above Average</p>
+      <p class="card-text"><b>Body posture</b><br>Exceptional</p>
+      <p class="card-text"><b>Achievements</b><br>Average</p>
+    </div>
+  </div>
+
+  <div class="card mt-2 mb-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title">Frontal</h5>
+          <p class="card-text"><b>Interpersonal intelligence</b><br>Above Average</p>
+          <p class="card-text"><b>Teammate</b><br>Exceptional</p>
+          <p class="card-text"><b>Self awareness</b><br>Above Average</p>
+          <p class="card-text"><b>Courageous authenticity</b><br>Average</p>
+          <p class="card-text"><b>Emotional balance</b><br>Average</p>
+          <p class="card-text"><b>Selflessness</b><br>Above Average</p>
+          <p class="card-text"><b>Mentorship</b><br>Exceptional</p>
+          <p class="card-text"><b>Composure</b><br>Average</p>
+          <p class="card-text"><b>Strategic focus</b><br>Above Average</p>
+        </div>
+        <div class="col">
+          <h5 class="card-title">Limbic</h5>
+          <p class="card-text"><b>Modesty</b><br>Above Average</p>
+          <p class="card-text"><b>Caring</b><br>Average</p>
+          <p class="card-text"><b>Integrity</b><br>Average</p>
+          <p class="card-text"><b>Decisiveness</b><br>Above Average</p>
+          <p class="card-text"><b>Drive</b><br>Exceptional</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

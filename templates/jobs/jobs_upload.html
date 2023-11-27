@@ -1,0 +1,125 @@
+{% extends "jobs/base.html" %}
+{% block css %}
+    {{ block.super }}
+    <style>
+        .it .btn-orange {
+            background-color: blue;
+            border-color: #777 !important;
+            color: #777;
+            text-align: left;
+            width: 100%;
+        }
+
+        .it input.form-control {
+
+            border: none;
+            margin-bottom: 0px;
+            border-radius: 0px;
+            border-bottom: 1px solid #ddd;
+            box-shadow: none;
+        }
+
+        .it .form-control:focus {
+            border-color: #ff4d0d;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div id="login-div" class="row justify-content-center mb-5 mt-5">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="shadow_box welcome-header">
+                <h2>Upload Jobs</h2>
+                <h4>Upload multiple HTML files</h4>
+                <div class="button_item">
+                    <form method="post" action="{% url 'upload_jobs' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="sel1">Select version:</label>
+                        <select required class="form-control" name="html_version">
+                            <option value="1">Google Files Version</option>
+                            <option value="2">Other Files Version</option>
+                            <option value="3">Linkedin</option>
+                            <option value="4">Upload Contacts</option>
+                        </select>
+                        <div class="form-group mt-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" readonly>
+                                <div class="input-group-btn">
+                              <span class="fileUpload btn btn-primary btn-color">
+                                  <span class="upl" id="upload">Upload multiple file</span>
+                                  <input required name="files[]" type="file" class="upload up" id="up"
+                                         multiple/>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-color mt-2 submit-btn">Upload</button>
+                    </form>
+                </div>
+            </div>
+            {% if contacts_updated %}
+            <div class="mb-4"></div>
+            <div class="shadow_box welcome-header mt-2 text-center">
+                <h4 class="">Please confirm to send mailing.</h4>
+                <button class="btn start-campaign btn-primary btn-color mt-2 submit-btn">Send Emails</button>
+                <p class="message mt-2"></p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script>
+        $(document).on('change', '.up', function () {
+
+            var names = [];
+            var length = $(this).get(0).files.length;
+            if (length > 20) {
+                alert("can not upload more than 20 files at a time")
+                $('#up').val(null)
+            } else {
+                for (var i = 0; i < $(this).get(0).files.length; ++i) {
+                    names.push($(this).get(0).files[i].name);
+                }
+                // $("input[name=file]").val(names);
+                if (length > 2) {
+                    var fileName = names.join(', ');
+                    $(this).closest('.form-group').find('.form-control').attr("value", length + " files selected");
+                } else {
+                    $(this).closest('.form-group').find('.form-control').attr("value", names);
+                }
+            }
+        });
+
+        $(document).on('click', '.start-campaign', function (){
+            $.ajax({
+                url:"{% url 'start_campaign' %}",
+                method: 'GET',
+                success: function (res){
+                    $('.message').text(res.message)
+                }
+            })
+        })
+    </script>
+{% endblock %}

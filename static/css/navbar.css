@@ -1,0 +1,133 @@
+.main-navbar .navbar {
+  padding: 0.5rem 0rem;
+}
+.main-navbar .navbar-nav {
+  margin-right: 0 !important;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.main-navbar .login_btn_navbar {
+  justify-content: flex-end;
+  width: 100%;
+}
+.main-navbar .navbar-brand {
+  margin-right: 2%;
+}
+
+.main-navbar .navbar-nav .nav-item {
+  width: fit-content;
+  height: fit-content;
+  margin-right: 15px;
+}
+.main-navbar .navbar-nav .dropdown {
+  position: absolute;
+  right: 0;
+}
+.main-navbar .navbar-nav .nav-item:last-child {
+  margin-right: 0;
+}
+.main-navbar .navbar-nav .nav-item .nav-link {
+  width: max-content;
+}
+.main-navbar .nav-item .user-image {
+  width: 40px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.main-navbar .nav-item .dropdown-toggle::after {
+  content: none !important;
+}
+
+.main-navbar .navbar-nav .nav-item .user-image img {
+  width: 100%;
+}
+.main-navbar .navbar-nav .dropdown-menu {
+  position: absolute;
+  left: -197px;
+  width: fit-content;
+  top: 43px;
+}
+.main-navbar .navbar-nav .nav-link {
+  margin: 0 !important;
+  height: 100%;
+}
+@media screen and (max-width: 991px) {
+  .navbar-container {
+    max-width: 960px;
+  }
+
+  .main-navbar .navbar-nav {
+    width: inherit;
+  }
+  .main-navbar .login_btn_navbar {
+    width: inherit;
+  }
+  .main-navbar .navbar-nav .dropdown-menu {
+    left: -211px;
+  }
+  .main-navbar .navbar-nav .nav-item .nav-link {
+    margin-right: 20px;
+  }
+  .main-navbar .navbar-nav {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main-navbar .navbar-nav .nav-item {
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .main-navbar .show-mobile {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+
+  .main-navbar .show-mobile .dropdown-menu.show {
+    right: 0;
+    left: inherit;
+  }
+  .main-navbar .show-destop {
+    display: none !important;
+  }
+  .main-navbar .navbar-nav .nav-item .header-button {
+    margin-bottom: 15px !important;
+  }
+  .main-navbar .navbar-nav .nav-item .user-image {
+    position: inherit;
+  }
+  .main-navbar .navbar-nav .dropdown-menu {
+    position: inherit;
+  }
+  .main-navbar .navbar-toggler {
+    padding: 0.12rem 0.45rem !important;
+  }
+  .main-navbar .navbar-toggler .navbar-toggler-icon {
+    width: 1.2em;
+    height: 1.2em;
+  }
+  .main-navbar .navbar-brand {
+    margin-right: 0%;
+  }
+  .main-navbar .header_logo {
+    height: auto;
+    width: 130px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show-mobile {
+    display: none !important;
+  }
+  .show-destop {
+    display: block;
+  }
+}

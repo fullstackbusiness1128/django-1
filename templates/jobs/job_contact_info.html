@@ -1,0 +1,16 @@
+{% if job.company.contact_name %}<p>Name<br>{{job.company.contact_name | title}}</p>{% endif %}
+<p>Title<br>{{job.company.contact_title.capitalize | title}}</p>
+{% if job.company.contact_email %}<p>Email<br>{{job.company.contact_email}}</p>{% endif %}
+{% if job.company.contact_li %}<p>Linkedin<br>{{job.company.contact_li}}</p>{% endif %}
+{% if job.company.contact_name2 %}<p>Second Contact Name<br>{{job.company.contact_name2}}</p>{% endif %}
+{% if job.company.contact_title2 %}<p>Second Contact Title<br>{{job.company.contact_title2}}</p>{% endif %}
+{% if job.company.contact_email2 %}<p>Second Contact Email<br>{{job.company.contact_email2}}</p>{% endif %}
+{% if job.company.contact_name3 %}<p>Third Contact Name<br>{{job.company.contact_name3}}</p>{% endif %}
+{% if job.company.contact_title3 %}<p>Third Contact Title<br>{{job.company.contact_title3}}</p>{% endif %}
+{% if job.company.contact_email3 %}<p>Third Contact Email<br>{{job.company.contact_email3}}</p>{% endif %}
+{% if job.job_contact_name %}<p>Job Contact Name<br>{{job.job_contact_name}}</p>{% endif %}
+{% if job.job_contact_email %}<p>Job Contact Email<br>{{job.job_contact_email}}</p>{% endif %}
+{% if job.job_contact_title %}<p>Job Contact Title<br>{{job.job_contact_title}}</p>{% endif %}
+{% if job.job_contact_name2 %}<p>Second Job Contact Name<br>{{job.job_contact_name2}}</p>{% endif %}
+{% if job.job_contact_email2 %}<p>Second Job Contact Email<br>{{job.job_contact_email2}}</p>{% endif %}
+{% if job.job_contact_title2 %}<p>Second Job Contact Title<br>{{job.job_contact_title2}}</p>{% endif %}

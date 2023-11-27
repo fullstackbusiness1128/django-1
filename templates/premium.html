@@ -1,0 +1,522 @@
+{% extends "jobs/base.html" %}
+
+{% block title %}
+<title>Leader Terminal - Premium</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container premium">
+    <div class="title">
+        <h2>Unlock the full member experience</h2>
+        <p>Get access to all jobs, interview resources, and more.</p>
+    </div>
+    <div class="card-section">
+        <div class="annual-card">
+            <div class="header">
+                <h3>Premium membership</h3>
+                <h5>$<span>1,750</span>one time fee</h5>
+            </div>
+            <div class="body">
+                <div class="list">
+                    <img src="./../static/images/check.svg" alt="">
+                    <p>Access to all jobs</p>
+                </div>
+                <div class="list">
+                    <img src="./../static/images/check.svg" alt="">
+                    <p>Career planning session</p>
+                </div>
+                <div class="list">
+                    <img src="./../static/images/check.svg" alt="">
+                    <p>Mock interview video call</p>
+                </div>
+                <div class="list">
+                    <img src="./../static/images/check.svg" alt="">
+                    <p>Professional email address</p>
+                </div>
+                <div class="list">
+                    <img src="./../static/images/check.svg" alt="">
+                    <p>On demand career advisor</p>
+                </div>
+                <div class="list">
+                    <img src="./../static/images/check.svg" alt="">
+                    <p>Priority job referrals</p>
+                </div>
+            </div>
+            <div class="footer">
+                <button onclick="stripeCall()">START NOW</button>
+            </div>
+        </div>
+    </div>
+    <div class="title">
+        <h2>Our 10,000+ Happy Users</h2>
+        <p>See what members are saying about us.</p>
+    </div>
+    <div class="row justify-content-center my-5">
+        <div class="col-xs-12 col-sm-12 col-md-5">
+            <div class="review-card">
+                <div class="header">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                </div>
+                <div class="body">
+                    <p>I used Leader Terminal for help with opportunities at Amazon and Google - 
+                        I got offers from both! Leader Terminal helped with getting opportunities and preparing for those interviews.
+                    </p>
+                </div>
+                <div class="footer">
+                    <div class="user-image">
+                        <img src="./../static/images/sophia.png" alt="">
+                    </div>
+                    <div class="user-description">
+                        <h3>Sophia S.</h3>
+                        <p>Vice President, AMAZON</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5">
+            <div class="review-card">
+                <div class="header">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                    <img src="./../static/images/Star.svg" alt="">
+                </div>
+                <div class="body">
+                    <p>The premium membership was extremely helpful in not only getting exposure to new opportunities, 
+                        but also helping me prepare myself for interviews. 
+                    </p>
+                </div>
+                <div class="footer">
+                    <div class="user-image">
+                        <img src="./../static/images/doug.png" alt="">
+                    </div>
+                    <div class="user-description">
+                        <h3>Doug P.</h3>
+                        <p>Senior Vice President, WELLS FARGO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title">
+        <h2>What comes with my plan?</h2>
+    </div>
+    <div class="row my-5">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-plan">
+                <div class="header">
+                    <h2>Unlimited jobs</h2>
+                </div>
+                <div class="body">
+                    <p>Get access to all jobs in our database, that includes confidential opportunities for full time and part time advisory positions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-plan">
+                <div class="header">
+                    <h2>Career planning session</h2>
+                </div>
+                <div class="body">
+                    <p>Get access to a 1 hour session with an industry expert with follow-up career plan of attack from your coach.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-plan">
+                <div class="header">
+                    <h2>Mock interviews</h2>
+                </div>
+                <div class="body">
+                    <p>Get access to a personalized mock interview and understand what your interview strengths and weaknesses are. </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-plan">
+                <div class="header">
+                    <h2>Professional email</h2>
+                </div>
+                <div class="body">
+                    <p>Get access to a professional email address to build your leadership brand.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-plan">
+                <div class="header">
+                    <h2>On demand advisor</h2>
+                </div>
+                <div class="body">
+                    <p>Get access to our MBA educated career advisors for anything to do with your career and job search.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-plan">
+                <div class="header">
+                    <h2>Priority job referrals</h2>
+                </div>
+                <div class="body">
+                    <p>Get job referral requests to our network of referrers at Fortune 1000 companies and 
+                        private equity/venture capital firms.</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .upgrade_btn {
+                background: #1C44AB;
+                font-weight: 500;
+                font-size: 15px;
+                border: none;
+                border-radius: 6px;
+                color: #fff;
+                width: 27%;
+                height: 44px;
+                padding: 8px 0;
+                cursor: pointer;
+                outline: none;
+            }
+        </style>
+        <div class="col-12">
+            <div class="card-plan-btn">
+                <button class="upgrade_btn" onclick="stripeCall()">START NOW</button>
+            </div>
+        </div>
+    </div>
+    
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    function stripeCall() {
+        fetch('{% url "checkout" %}')
+        .then(response => response.json())
+        .then(data => {
+            var stripe = Stripe(data.stripe_public_id);
+            stripe.redirectToCheckout({
+                    sessionId: data.session_id,
+                }).then(function (result){
+            });
+        })
+        .catch(error => {
+            window.location.href = '{% url "signup" %}'
+        });
+        
+        
+    }
+    
+</script>
+
+
+
+
+
+<style>
+    .premium {
+        margin: 70px auto;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .premium .title {
+        width: 100%;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .premium .title h2 {
+        font-weight: 600;
+        font-size: 44px;
+    }
+
+    .premium .title p {
+        font-weight: 400;
+        font-size: 20px;
+        margin-top: 24px;
+    }
+
+    .premium .card-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .premium .annual-card {
+        box-shadow: -4px -4px 4px rgba(191, 191, 191, 0.3), 4px 4px 4px rgba(191, 191, 191, 0.3), -4px 4px 4px rgba(191, 191, 191, 0.3), 4px -4px 4px rgba(191, 191, 191, 0.3);
+        border-radius: 10px;
+        padding: 32px 24px;
+        margin: 40px 0;
+        min-width: 350px;
+        margin-bottom: 60px;
+    }
+
+    .premium .annual-card .header {
+        position: relative;
+    }
+
+    .premium .annual-card .header h3 {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    .premium .annual-card .header p {
+        font-weight: 600;
+        font-size: 14px;
+        color: #1C44AB;
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    .premium .annual-card .header p::after {
+        width: 95px;
+        top: 10px;
+        position: absolute;
+        content: "";
+        height: 1px;
+        background-color: black;
+        left: 0;
+    }
+
+    .premium .annual-card .header h5 {
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 4px;
+    }
+
+    .premium .annual-card .header h5 span {
+        font-size: 20px;
+        font-weight: 600;
+        margin-right: 4px;
+    }
+
+    .premium .annual-card .header button {
+        position: absolute;
+        top: 4px;
+        right: 0;
+        background: #E5EBFB;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 12px;
+        color: #1C44AB;
+        border: none;
+        padding: 8px 16px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .premium .annual-card .body {
+        margin: 23px 0;
+    }
+
+    .premium .annual-card .body .list {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 11px 0;
+    }
+
+    .premium .annual-card .body .list img:last-child {
+        cursor: pointer;
+    }
+
+    .premium .annual-card .body .list p {
+        font-weight: 400;
+        font-size: 14px;
+        margin: 0 15px;
+    }
+
+    .premium .annual-card .footer button {
+        background: #1C44AB;
+        font-weight: 500;
+        font-size: 15px;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        width: 100%;
+        padding: 8px 0;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .premium .review-card {
+        box-shadow: -4px -4px 4px rgba(191, 191, 191, 0.3), 4px 4px 4px rgba(191, 191, 191, 0.3), -4px 4px 4px rgba(191, 191, 191, 0.3), 4px -4px 4px rgba(191, 191, 191, 0.3);
+        border-radius: 10px;
+        padding: 32px 24px;
+        margin-bottom: 40px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .premium .review-card .header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .premium .review-card .body {
+        margin: 16px 0;
+    }
+
+    .premium .review-card .body p {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 29px;
+    }
+
+    .premium .review-card .footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .premium .review-card .footer .user-image {
+        width: 56px;
+        height: 56px;
+        border-radius: 100%;
+        margin-right: 16px;
+    }
+
+    .premium .review-card .footer .user-image img {
+        width: 100%;
+        border-radius: 100%;
+    }
+
+    .premium .review-card .footer .user-description h3 {
+        font-weight: 600;
+        font-size: 19px;
+        margin-bottom: 3px;
+    }
+
+    .premium .review-card .footer .user-description p {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+    .premium .card-plan {
+        margin-bottom: 55px;
+    }
+
+    .premium .card-plan .header h2 {
+        font-weight: 600;
+        font-size: 20px;
+        color: #1C44AB;
+        margin-bottom: 10px;
+    }
+
+    .premium .card-plan .body p {
+        font-weight: 400;
+        font-size: 19px;
+        margin-bottom: 0;
+    }
+
+    .premium .card-plan-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .premium .card-plan-btn button {
+        background: #1C44AB;
+        font-weight: 500;
+        font-size: 15px;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        padding: 8px 24px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .premium #accordion {
+        box-shadow: -4px -4px 4px rgba(191, 191, 191, 0.3), 4px 4px 4px rgba(191, 191, 191, 0.3), -4px 4px 4px rgba(191, 191, 191, 0.3), 4px -4px 4px rgba(191, 191, 191, 0.3);
+        border-radius: 10px;
+        margin: 80px 0;
+        padding: 10px 0;
+    }
+
+    .premium #accordion .panel {
+        border-radius: 0;
+        border: 0;
+        margin-top: 0px;
+        padding: 0 24px;
+        border-bottom: 1.3px solid #CFDAF7;
+    }
+
+    .premium #accordion .panel .panel-body {
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .premium #accordion .panel:last-child {
+        border-bottom: none;
+    }
+
+    .premium #accordion a {
+        display: block;
+        padding: 20px 0;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 20px;
+        color: inherit;
+    }
+
+    .premium #accordion .panel .panel-heading .panel-title {
+        margin-bottom: 0;
+    }
+
+    .premium #accordion .panel-heading {
+        padding: 0;
+        border-radius: 0px;
+        text-align: left;
+    }
+
+    .premium #accordion .panel-heading .accordion-toggle::before {
+        font-family: 'FontAwesome';
+        content: '\f0da';
+        float: right;
+        color: #1C44AB;
+        font-weight: lighter;
+        transform: rotate(90deg);
+        transition: all 0.2s ease-in;
+    }
+
+    .premium #accordion .panel-heading .accordion-toggle.collapsed::before {
+        color: #1C44AB;
+        transform: rotate(0deg);
+        transition: all 0.2s ease-in;
+    }
+
+    @media screen and (max-width: 768px) {
+        .premium .annual-card {
+            min-width: 80%;
+        }
+
+        .premium .title h2 {
+            font-weight: 600;
+            font-size: 30px;
+        }
+
+        .premium .title p {
+            font-size: 17px;
+        }
+
+        .premium #accordion a {
+            font-size: 15px;
+        }
+
+        .premium #accordion .panel .panel-body {
+            font-size: 15px;
+        }
+    }
+</style>
+
+{% endblock %}

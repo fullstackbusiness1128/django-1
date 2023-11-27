@@ -1,0 +1,28 @@
+{% extends "jobs/base.html" %}
+{% load humanize %}
+
+{% block title %}
+  <title>{{company.name}}</title>
+{% endblock %}
+
+{% block content %}
+  <h1>{{company.name}}</h1>
+  <div class="col-sm-4"><br>
+        {% if company.contact_name %}{{company.contact_name}}<br>{% endif %}
+        {% if company.contact_title %}{{company.contact_title}}<br>{% endif %}
+        {% if company.contact_email %}<b class="text-nowrap"><a href="mailto:{{company.contact_email}}">{{company.contact_email}}</a></b><br>{% endif %}
+ </div>
+
+ <div class="col-sm-4"><br>
+       {% if company.contact_name2 %}{{company.contact_name}}<br>{% endif %}
+       {% if company.contact_title2 %}{{company.contact_title}}<br>{% endif %}
+       {% if company.contact_email2 %}<b class="text-nowrap"><a href="mailto:{{company.contact_email}}">{{company.contact_email}}</a></b><br>{% endif %}
+</div>
+
+<div class="col-sm-4"><br>
+      {% if company.contact_name3 %}{{company.contact_name}}<br>{% endif %}
+      {% if company.contact_title3 %}{{company.contact_title}}<br>{% endif %}
+      {% if company.contact_email3 %}<b class="text-nowrap"><a href="mailto:{{company.contact_email}}">{{company.contact_email}}</a></b><br>{% endif %}
+</div>
+  <p><a href="/companies">Back to Company Board</a></p>
+{% endblock %}

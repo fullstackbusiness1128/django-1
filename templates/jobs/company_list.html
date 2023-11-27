@@ -1,0 +1,59 @@
+{% extends "jobs/base.html" %}
+{% load staticfiles %}
+{% block title %}
+    <title>Leader Terminal - Company Board</title>
+{% endblock %}
+
+{% block content %}
+
+    <!-- STYLE -- END -->
+    <div class="header_strip">
+        <h2>Meet with board members directly.</h2>
+    </div>
+
+    <!-- Companies List -- START -->
+    <div class="companies_list_section">
+        <h2 class="section_title">Trending Companies</h2>
+        <div class="companies_list">
+            <div class="row row-eq-height">
+                {% for company in companies %}
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                        <div class="company_item">
+                            <a href="/companies/{{ company.pk }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/404px-Apple_logo_black.svg.png"
+                                     class="img-fluid d-block mx-auto" alt="...">
+                                <span title="{{ company.name }}">{{ company.name }}</span>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% if companies.has_next %}
+        <ul class="pagination justify-content-center">
+            {% if search != "" %}
+                <li class="page-item"><a class="page-link"
+                                         href="?search={{ search }}&page={{ companies.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link"
+                                         href="?search={{ search }}&page={{ companies.paginator.num_pages }}">Last</a>
+                </li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ companies.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ companies.paginator.num_pages }}">Last</a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    <!-- Companies List -- END -->
+    {% if request.user.is_staff %}
+        <p>Would you like to add a company? <a href="{% url 'company-add' %}" class="btn btn-success">Add</a></p>
+    {% endif %}
+
+
+    <!-- Footer Strip -- START -->
+{#    <div class="footer_strip">#}
+{#        <h5>Leader Terminal All Rights Reserved</h5>#}
+{#    </div>#}
+    <!-- Footer Strip -- END -->
+{% endblock %}

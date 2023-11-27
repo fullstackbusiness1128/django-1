@@ -1,0 +1,20 @@
+<div class="search-not-found">
+  <p>
+    Your Search - <strong>{{ search }}</strong> - did not match any listings
+    with your currently applied filters.
+  </p>
+  <p>Suggestions:</p>
+  <ul>
+    <li>Clear all currently applied filters.</li>
+    <li>
+      Broaden your search by
+      <a href="{% url 'job-list' %}">viewing all listings</a> & using the
+      filters to refine your search.
+    </li>
+    <li>Make sure all words are spelled correctly.</li>
+    <li>
+      For best results, spell out full titles like “Chief Executive Officer”
+      instead of “CEO”.
+    </li>
+  </ul>
+</div>

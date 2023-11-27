@@ -1,0 +1,48 @@
+{% extends 'jobs/../jobs/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="page_title_wrapper">
+        <div class="container">
+            <h3 class="text-center">About Us</h3>
+        </div>
+    </div>
+    <div class="about_page_wrapper pt-5">
+        <div class="container">
+            <div class="row mb-5 pb-4">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="about_txt">
+                        <p>Our goal is to empower senior leadership opportunity search so that the best business leaders have access to them.
+                        </p>
+                        <p>The positions available on Leader Terminal come from our network of employers, 
+                            and industry experts with hiring contact details so that business leaders can directly meet with each other.</p>
+                        <p>Leader Terminal&reg; is free to join. To join now <a style="text-decoration: underline"
+                                                                            href="{% url 'signup' %}">click here.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="team_section">
+                <h3 class="mb-5 text-center font-weight-light">Leadership</h3>
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                        <div class="member_item text-center">
+                            <div class="member_img">
+                                <a href="https://www.linkedin.com/in/janis-whitaker-69969431" target="_blank">
+                                    <img src="{% static 'images/linkedin1.jpeg' %}" alt="..."
+                                         class="img-fluid d-block mx-auto rounded-circle">
+                                </a>
+                            </div>
+                            <div class="member_info">
+                                <a href="https://www.linkedin.com/in/janis-whitaker-69969431">
+                                    <h4>Janis Whitaker</h4>
+                                    <p>Chief Executive Officer</p>
+                                    <p>Leader Terminal, Inc</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+{% endblock %}

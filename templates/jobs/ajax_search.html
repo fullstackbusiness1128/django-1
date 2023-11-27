@@ -1,0 +1,34 @@
+{% load utils %}    
+<div class="search_listing_wrapper mb-2">
+    {% for job in jobs %}
+        <a href="{% url 'job-detail' pk=job.pk %}">
+            <div style="color: #000;" class="list__container px-4 pt-4 bg-white shadow mb-4">
+                <h4 class="font-weight-bold">{{ job.job_title }}</h4>
+                <div class="subheading">
+                    <div class="location-heading d-flex align-items-center">
+                        <span class="location__icon d-inline-block"></span>
+                        <span class="">{{ job.locations }}</span>
+                    </div>
+                </div>
+                <div class="anchor_link__container pt-4 pb-4">
+                    {% if job.industry %}
+                        <span
+                                class="anchor__link border-right font-weight-bold pr-3">{{ job.industry }}</span>
+                    {% endif %}
+                    <span class="anchor__link pl-2">{% if job.company_name %}
+                        {{ job.company_name }}{% else %}Confidential{% endif %}</span>
+
+                </div>
+                <div class="px-4 py-1 bottom__line">
+                    {% calculate_days job.posted_date as submitted_days %}
+                    <p class="text-dark font-weight-bold">Submitted {% if submitted_days > 0 %}
+                        {{ submitted_days }} day(s) ago {% else %} Today {% endif %}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+
+    {% if jobs.has_next %}
+        <button class="text-center d-flex m-auto load-more-jobs btn" style="cursor: pointer; background-color: #1c44ab; color: white;" data-page-size="{{ jobs|length|add:30 }}">Load More Jobs</button>
+    {% endif %}
+</div>

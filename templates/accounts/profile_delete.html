@@ -1,0 +1,16 @@
+{% extends "jobs/../jobs/base.html" %}
+
+{% block title %}
+  <title>Leader Terminal - Delete Account</title>
+{% endblock %}
+
+{% block content %}
+  <h4>Delete Account</h4>
+  <form method="post">
+    {% csrf_token %}
+    <p>{{user.first_name}}, are you sure you want to delete your account?</p>
+    <p>All of your data will be lost.</p>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" href="/profile">Cancel</a>
+  </form>
+{% endblock %}

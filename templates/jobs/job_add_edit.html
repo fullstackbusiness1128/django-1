@@ -1,0 +1,22 @@
+{% extends "jobs/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  <title>Leader Terminal - {{action}}</title>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+    {{ form|crispy }}
+  <p>
+    <button type="submit" class="btn btn-success">{{action}}</button>
+    {% if action == "Add" %}
+      <a class="btn btn-secondary" href="/jobs">Cancel</a>
+    {% else %}
+      <a class="btn btn-secondary" href="/jobs/{{job.pk}}">Cancel</a>
+    {% endif %}
+  </p>
+
+</form>
+{% endblock %}

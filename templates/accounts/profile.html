@@ -1,0 +1,94 @@
+{% extends "jobs/../jobs/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Leader Terminal - Profile</title>
+{% endblock %}
+
+{% block content %}
+    <div class="page_header_area">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <h2>Manage Settings</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login_area">
+        <div class="container-fluid">
+            <div id="login-div" class="row justify-content-center mb-5">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="shadow_box welcome-header">
+                        <div class="profile_action_area">
+                            <div class="row_area">
+                                <div class="left_sec">
+                                    Email
+                                </div>
+                                <div class="right_sec">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+                            <div class="row_area">
+                                <div class="left_sec">
+                                    LinkedIn
+                                </div>
+                                <div class="right_sec">
+                                    <a data-toggle="collapse" href="#linkedin_collpase"
+                                       role="button" aria-expanded="false"
+                                       aria-controls="collapseExample">Change</a>
+                                </div>
+                            </div>
+                            <div class="collapse" id="linkedin_collpase">
+                                <form method="POST" id="linkedin_url" class="change_pass_sec">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="pass">Linkedln URL</label>
+                                        <input type="url" value="{{ user.linkedin }}" name="linkedin_url" id="pass" class="form-control">
+                                    </div>
+                                    <div class="btns_area">
+                                        <button type="submit" class="btn btn-primary btn-color mb-2">
+                                            Save
+                                        </button>
+                                        <button type="button" data-toggle="collapse" aria-expanded="false"
+                                                data-target="#linkedin_collpase"
+                                                class="btn btn-primary btn-color mb-2">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                    <input type="hidden" value="{{ request.get_full_path }}" name="url">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="toggle_line">
+                            <p id="switch-text">Appear in hiring managers searches relevant to my career (OFF).</p>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function () {
+
+
+            $('#customSwitch1').change(function () {
+                if ($(this).is(':checked')) {
+                    $('#switch-text').text('Appear in hiring managers searches relevant to my career (ON).');
+                } else {
+                    $('#switch-text').text('Appear in hiring managers searches relevant to my career (OFF).');
+                }
+
+            });
+        })
+    </script>
+{% endblock javascript %}

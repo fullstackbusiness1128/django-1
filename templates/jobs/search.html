@@ -1,0 +1,200 @@
+{% extends 'jobs/base.html' %}
+{% load static utils %}
+
+{% block title %}
+    <title>Leader Terminal - Search</title>
+{% endblock %}
+
+{% block content %}
+    <!-- CODE FOR : MAIN SECTION -- START -->
+    <main class='main'>
+        <!--CODE FOR SEARCH INPUT Start-->
+        {% include "tools/job_search.html" with locations=locations %}
+        <!--CODE FOR SEARCH INPUT End-->
+
+        <!--CODE FOR Listing Start-->
+        <section class="list__section pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
+                        <div class="search_sidebar">
+                            {#                            <h5 class="result_count">{{ css.count }} Results</h5>#}
+                            <h4 class="sidebar_heading">Filters</h4>
+                            <div class="sidebar_item mb-3">
+                                <h4>Level - <a href="#" id="clear-filter">Clear</a></h4>
+                                <div class="sidebar_checklist">
+                                    <ul class="list-unstyled">
+                                        {% for level, count in levels.items %}
+                                            <li>
+                                                <input type="checkbox" class="styled-checkbox" value="{{ level }}"
+                                                       id="id_{{ level }}">
+                                                <label for="id_{{ level }}">{{ level }}&nbsp;<span class="count-span">({{count}})</span></label>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
+                        {#                        <h6 class="text-right listing_section_heading mb-3"><a href="#">Date</a></h6>#}
+                        <div class="loading"></div>
+                        <div id="search-content">
+                            <div class="search_listing_wrapper mb-2">
+                                {% for job in jobs %}
+                                    <a href="{% url 'job-detail' pk=job.pk %}">
+                                        <div style="color: #000;" class="list__container px-4 pt-4 bg-white shadow mb-4">
+                                            <h4 class="font-weight-bold">{{ job.job_title }}</h4>
+                                            <div class="subheading">
+                                                <div class="location-heading d-flex align-items-center">
+                                                    <span class="location__icon d-inline-block"></span>
+                                                    <span class="">{{ job.locations }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="anchor_link__container pt-4 pb-4">
+                                                {% if job.industry %}
+                                                    <span
+                                                            class="anchor__link border-right font-weight-bold pr-3">{{ job.industry }}</span>
+                                                {% endif %}
+                                                <span class="anchor__link pl-2">{% if job.company_name %}
+                                                    {{ job.company_name }}{% else %}Confidential{% endif %}</span>
+    
+                                            </div>
+                                            <div class="px-4 py-1 bottom__line">
+                                                {% calculate_days job.posted_date as submitted_days %}
+                                                <p class="text-dark font-weight-bold">Submitted {% if submitted_days > 0 %}
+                                                    {{ submitted_days }} day(s) ago {% else %} Today {% endif %}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+    
+                                {% if jobs.has_next %}
+                                    <button class="text-center d-flex m-auto load-more-jobs btn" style="cursor: pointer; background-color: #1c44ab; color: white;" data-page-size="{{ jobs|length|add:30 }}">Load More Jobs</button>
+                                {% endif %}
+                            
+                            
+                               
+                            </div>
+    
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--CODE FOR Listing End-->
+    </main>
+    <!-- CODE FOR : MAIN SECTION -- END -->
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function () {
+            $(".loading").hide();
+            function ajaxCall(data, page_size=30) {
+                $('#search-content').html('<div style="height:100vh;"></div>');
+                $(".loading").show();
+                $.ajax({
+                    method: "POST",
+                    url: `{% url 'job_search'%}?page_size=${page_size}`,
+                    data: data,
+                    success: function (response) {
+                        $(".loading").hide();
+                        $('#search-content').html(response.html);
+                    }
+                });
+            }
+
+            $(document).on('change', '.sidebar_checklist input', function () {
+                var levels = [];
+                $('.sidebar_checklist input:checked').each(function () {
+                    levels.push(this.value);
+                });
+                var data = {
+                    "levels": levels,
+                    "keyword": $('#search-keyword').val(),
+                    "location": $('#search-location').val(),
+                    "csrfmiddlewaretoken": "{{ csrf_token }}"
+                };
+
+                if(this.checked){
+                    $(this).parent().parent().prepend($(this).parent());
+                }
+                else{
+                    $(this).parent().parent().append($(this).parent());
+                }
+
+                $("input:checkbox").each((index, element) => {
+                    if(!element.checked){
+                        $(element).parent().find('span').hide();
+                    }
+                    else{
+                        $(element).parent().find('span').show();
+                    }
+                });
+                
+                if($("input:checkbox:checked").length === 0){
+                    $(".count-span").each((index, element) => {
+                        $(element).show();
+                    })
+                }
+
+                ajaxCall(data)
+            });
+
+            $(document).on('click', '.load-more-jobs', function () {
+                var levels = [];
+                $('.sidebar_checklist input:checked').each(function () {
+                    levels.push(this.value);
+                });
+                var data = {
+                    "levels": levels,
+                    "keyword": $('#search-keyword').val(),
+                    "location": $('#search-location').val(),
+                    "csrfmiddlewaretoken": "{{ csrf_token }}"
+                };
+                ajaxCall(data, page_size=$(".load-more-jobs").data("page-size"));
+            })
+
+            $(document).on('click', '#clear-filter', function (e) {
+                e.preventDefault();
+                var data = {
+                    {#"keyword": $('#search-keyword').val(),#}
+                    "csrfmiddlewaretoken": "{{ csrf_token }}"
+                };
+
+                ajaxCall(data);
+                
+                $("input:checkbox").each((index, element) => {
+                    element.checked = false;
+                });
+
+                $(".count-span").each((index, element) => {
+                    $(element).show();
+                });
+
+                $('#search-keyword').val(null)
+            });
+            $(document).on('submit', '#searchForm', function (e) {
+                e.preventDefault();
+                var levels = [];
+                $('.sidebar_checklist input:checked').each(function () {
+                    levels.push(this.value);
+                });
+                var data = {
+                    "keyword": $('#search-keyword').val(),
+                    "csrfmiddlewaretoken": "{{ csrf_token }}"
+
+                };
+                if (levels.length > 0) {
+                    data['levels'] = levels
+                }
+                ajaxCall(data)
+            });
+        });
+    </script>
+{% endblock %}
+
+
+

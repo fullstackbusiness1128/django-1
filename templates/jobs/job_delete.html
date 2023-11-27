@@ -1,0 +1,15 @@
+{% extends "jobs/base.html" %}
+
+{% block title %}
+  <title>Leader Terminal - Delete {{job.title}}</title>
+{% endblock %}
+
+{% block content %}
+  <h4>Delete Job</h4>
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete the {{job.title}} job?</p>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" href="/jobs/{{job.pk}}">Cancel</a>
+  </form>
+{% endblock %}

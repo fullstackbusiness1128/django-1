@@ -1,0 +1,35 @@
+<section class="container-fluid search__input__section p-4">
+    <div class="container">
+        <h4 class="text-dark text-center mb-5">Search Exclusive Jobs with Direct Contact Emails</h4>
+        <form method="post" action="{% url 'job_search' %}">
+            {% csrf_token %}
+            <div class="row align-items-center">
+                <div class="col-md-5 col-sm-12 mb-3">
+                    <div class="input__container position-relative">
+                        <input type="text" class="form-control shadow pl-5"
+                               name="keyword"
+                               id="search-keyword"
+                               placeholder="Job title, Industry, Function or Company"/>
+                        <span class="position-absolute input-icons search d-inline-block"></span>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-12 mb-3">
+                    <div class="input__container position-relative location-dropdown">
+                        <select class="selectpicker form-control shadow pl-5"
+                                id="search-location"
+                                name="location">
+                            <option value="">Select Location</option>
+                            {% for loc in locations %}
+                                <option value="{{ loc }}">{{ loc }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="position-absolute input-icons d-inline-block location"></span>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-12 mb-3 text-center">
+                    <button type="submit" style="cursor: pointer;" class="btn__custom">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,16 @@
+{% extends "jobs/base.html" %}
+
+{% block title %}
+  <title>Leader Terminal - Delete {{company.name}}</title>
+{% endblock %}
+
+{% block content %}
+  <h4>Delete Company</h4>
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{company.name}}?</p>
+    <p>All of the jobs associated with this company will be deleted permanently.</p>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" href="/companies/{{company.pk}}">Cancel</a>
+  </form>
+{% endblock %}
